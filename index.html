@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sikyo — If it makes sense, it’s Sikyo</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --blue: #243b5a;        /* Sikyo calm blue */
+      --text: #1f2937;
+      --muted: #6b7280;
+      --bg: #fafafa;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Inter', sans-serif;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+    }
+
+    .container {
+      max-width: 760px;
+      margin: auto;
+      padding: 0 20px;
+    }
+
+    section {
+      padding: 80px 0;
+    }
+
+    /* HERO */
+    .hero {
+      padding: 120px 0 100px;
+    }
+
+    .hero h1 {
+      font-size: 3.2rem;
+      font-weight: 700;
+      color: var(--blue);
+      line-height: 1.1;
+    }
+
+    .hero p {
+      margin-top: 24px;
+      font-size: 1.1rem;
+      color: var(--muted);
+      max-width: 520px;
+    }
+
+    .btn {
+      display: inline-block;
+      margin-top: 40px;
+      padding: 14px 34px;
+      background: var(--blue);
+      color: #fff;
+      text-decoration: none;
+      border-radius: 8px;
+      font-weight: 600;
+    }
+
+    /* NOTEBOOK TEXT */
+    .note {
+      font-size: 1.1rem;
+      color: var(--text);
+      line-height: 1.9;
+      max-width: 620px;
+    }
+
+    .note span {
+      display: block;
+      margin-top: 18px;
+    }
+
+    /* SIMPLE LIST */
+    .simple-list {
+      margin-top: 28px;
+      color: var(--muted);
+      line-height: 2;
+    }
+
+    /* FINAL */
+    .final {
+      text-align: center;
+    }
+
+    footer {
+      padding: 50px 0;
+      font-size: 0.85rem;
+      color: var(--muted);
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 600px) {
+      .hero {
+        padding: 90px 0 70px;
+      }
+
+      .hero h1 {
+        font-size: 2.3rem;
+      }
+
+      section {
+        padding: 60px 0;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="container">
+      <h1>If it makes sense,<br>it’s Sikyo.</h1>
+      <p>
+        You don’t need more notes.<br>
+        You need things to finally make sense.
+      </p>
+      <a href="#" class="btn">Make it make sense</a>
+    </div>
+  </section>
+
+  <!-- TRUTH -->
+  <section>
+    <div class="container">
+      <div class="note">
+        You study.  
+        <span>You read.</span>
+        <span>You memorise.</span>
+
+        <span>
+          But during exams,<br>
+          it feels like nothing connects.
+        </span>
+
+        <span>
+          Sikyo exists for that exact moment<br>
+          when confusion turns into clarity.
+        </span>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHAT SIKYO DOES -->
+  <section>
+    <div class="container">
+      <div class="note">
+        We explain topics<br>
+        until you don’t need to memorise them.
+      </div>
+
+      <div class="simple-list">
+        Simple language<br>
+        Exam-oriented thinking<br>
+        Revision that actually helps
+      </div>
+    </div>
+  </section>
+
+  <!-- START -->
+  <section>
+    <div class="container">
+      <div class="note">
+        Start where you’re stuck.
+      </div>
+      <a href="#" class="btn">Explore Class 11 Notes</a>
+      <div class="simple-list">Class 12 coming soon.</div>
+    </div>
+  </section>
+
+  <!-- SIGNATURE -->
+  <section class="final">
+    <div class="container">
+      <div class="note">
+        Understanding shouldn’t feel hard.
+      </div>
+      <h2 style="margin-top:30px; color:var(--blue); font-size:1.8rem;">
+        If it makes sense, it’s Sikyo.
+      </h2>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container">
+      © 2025 Sikyo — sikyo.study
+    </div>
+  </footer>
+
+</body>
+</html>
