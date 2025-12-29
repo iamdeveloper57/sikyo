@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sikyo Premium Notebook Loader</title>
+<style>
+  * { margin:0; padding:0; box-sizing:border-box; font-family:'Inter', sans-serif; }
+  body {
+    background:#fafafa;
+    display:flex; justify-content:center; align-items:center;
+    height:100vh; overflow:hidden;
+  }
+
+  /* Loader Container */
+  .loader {
+    position: relative;
+    width: 280px;
+    height: 220px;
+    perspective: 1000px;
+  }
+
+  /* Spiral Rings */
+  .spirals {
+    position: absolute;
+    top: -20px;
+    left: 50%;
+    transform: translateX(-50%);
+    display:flex;
+    gap: 6px;
+    z-index: 2;
+  }
+  .spiral {
+    width: 10px; height: 10px;
+    border: 2px solid #243b5a;
+    border-radius: 50%;
+    animation: spiralAnim 1.5s ease-in-out infinite alternate;
+  }
+  .spiral:nth-child(2) { animation-delay:0.1s; }
+  .spiral:nth-child(3) { animation-delay:0.2s; }
+  .spiral:nth-child(4) { animation-delay:0.3s; }
+  @keyframes spiralAnim {
+    0% { transform: translateY(0) rotate(0deg); opacity:0.4; }
+    50% { transform: translateY(-6px) rotate(180deg); opacity:1; }
+    100% { transform: translateY(0) rotate(360deg); opacity:0.4; }
+  }
+
+  /* Notebook Body */
+  .notebook {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    background:#fff;
+    border-radius:12px;
+    box-shadow:0 15px 35px rgba(0,0,0,0.08);
+    transform-style: preserve-3d;
+    animation: pageFlip 2s ease-in-out infinite alternate;
+  }
+
+  @keyframes pageFlip {
+    0% { transform: rotateX(0deg); }
+    50% { transform: rotateX(2deg); }
+    100% { transform: rotateX(0deg); }
+  }
+
+  /* Sikyo Text */
+  .sikyo-text {
+    position: absolute;
+    top: 50%; left:50%;
+    transform: translate(-50%,-50%);
+    display:flex;
+    font-size: 3rem;
+    font-weight:700;
+    color:#243b5a;
+    letter-spacing:0.2rem;
+  }
+  .sikyo-text span {
+    opacity:0; transform:translateY(30px);
+    animation: letterAnim 1.5s ease forwards;
+  }
+  .sikyo-text span:nth-child(1) { animation-delay:0.3s; }
+  .sikyo-text span:nth-child(2) { animation-delay:0.45s; }
+  .sikyo-text span:nth-child(3) { animation-delay:0.6s; }
+  .sikyo-text span:nth-child(4) { animation-delay:0.75s; }
+  .sikyo-text span:nth-child(5) { animation-delay:0.9s; }
+
+  @keyframes letterAnim {
+    0% { opacity:0; transform:translateY(30px); filter:blur(2px); }
+    50% { opacity:1; transform:translateY(0); filter:blur(0); text-shadow:0 0 12px rgba(36,59,90,0.2); }
+    100% { opacity:1; transform:translateY(0); filter:blur(0); }
+  }
+
+  /* Notebook Shadows */
+  .shadow {
+    position:absolute;
+    top:50%; left:50%;
+    width:260px; height:180px;
+    background: rgba(36,59,90,0.05);
+    border-radius:12px;
+    transform: translate(-50%,-50%) rotateX(15deg);
+    z-index:-1;
+    animation: shadowFade 2s ease-in-out infinite alternate;
+  }
+
+  @keyframes shadowFade {
+    0% { opacity:0; transform:translate(-50%,-50%) rotateX(0deg);}
+    50% { opacity:1; transform:translate(-50%,-50%) rotateX(15deg);}
+    100% { opacity:0; transform:translate(-50%,-50%) rotateX(0deg);}
+  }
+
+</style>
+</head>
+<body>
+
+<div class="loader">
+  <div class="spirals">
+    <div class="spiral"></div>
+    <div class="spiral"></div>
+    <div class="spiral"></div>
+    <div class="spiral"></div>
+  </div>
+  <div class="notebook"></div>
+  <div class="sikyo-text">
+    <span>S</span><span>i</span><span>k</span><span>y</span><span>o</span>
+  </div>
+  <div class="shadow"></div>
+</div>
+
+<script>
+  // Auto-hide loader after 3s (optional for integration)
+  setTimeout(() => {
+    document.querySelector('.loader').style.opacity = 0;
+    document.querySelector('.loader').style.transition = 'opacity 0.8s ease';
+  }, 3000);
+</script>
+
+</body>
+</html>

@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sikyo — Class 11</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --blue:#243b5a;
+  --text:#1f2937;
+  --muted:#6b7280;
+  --bg:#fafafa;
+  --card-bg:#ffffff;
+  --shadow:rgba(0,0,0,0.06);
+}
+
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Inter',sans-serif;}
+body{background:var(--bg);color:var(--text);}
+.container{max-width:880px;margin:auto;padding:0 20px;}
+section{padding:100px 0;text-align:center; scroll-behavior: smooth;}
+
+/* Back/Home link */
+.back-link{
+  display:inline-block;
+  margin-bottom:50px;
+  font-size:0.95rem;
+  color:var(--muted);
+  text-decoration:none;
+  opacity:0;
+  transform:translateY(20px);
+  animation:fadeIn 0.8s forwards;
+  animation-delay:0.1s;
+}
+.back-link:hover{color:var(--blue);}
+
+/* Header */
+h1{
+  font-size:2.6rem;
+  font-weight:700;
+  line-height:1.2;
+  margin-bottom:20px;
+  opacity:0;
+  transform:translateY(20px);
+  animation:fadeIn 0.8s forwards;
+  animation-delay:0.2s;
+}
+h1 span{color:var(--blue);}
+
+p{
+  font-size:1.1rem;
+  color:var(--muted);
+  max-width:600px;
+  margin:0 auto 60px;
+  line-height:1.75;
+  opacity:0;
+  transform:translateY(20px);
+  animation:fadeIn 0.8s forwards;
+  animation-delay:0.3s;
+}
+
+/* Streams cards */
+.streams{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+  gap:40px;
+  opacity:0;
+  transform:translateY(20px);
+  animation:fadeIn 0.8s forwards;
+  animation-delay:0.4s;
+  
+}
+
+.stream{
+  background:var(--card-bg);
+  padding:40px 25px;
+  border-radius:16px;
+  box-shadow:0 12px 24px var(--shadow);
+  cursor:pointer;
+  transition:transform 0.3s ease, box-shadow 0.3s ease;
+  text-align:left;
+  position:relative;
+   transform:translateY(-6px);
+  box-shadow:0 20px 40px var(--shadow);
+}
+
+.stream:hover{
+  transform:translateY(-6px);
+  box-shadow:0 20px 40px var(--shadow);
+}
+
+.stream h2{
+  color: var(--blue);
+  font-size:1.7rem;
+  font-weight:700;
+  margin-bottom:12px;
+  position:relative;
+}
+
+.stream h2::after{
+  content:'';
+  position:absolute;
+  left:0;
+  bottom:-6px;
+  width:0;
+  height:3px;
+  background:var(--blue);
+  transition:width 0.3s ease;
+}
+.stream:hover h2::after{width:50px;}
+
+.stream p{
+  color:var(--muted);
+  font-size:1rem;
+  line-height:1.6;
+}
+
+/* Bottom CTA for flow continuity */
+.bottom-cta{
+  margin-top:80px;
+  font-size:0.95rem;
+  color:var(--muted);
+  opacity:0;
+  transform:translateY(20px);
+  animation:fadeIn 0.8s forwards;
+  animation-delay:0.5s;
+}
+.bottom-cta a{
+  color:var(--blue);
+  text-decoration:none;
+  font-weight:500;
+}
+.bottom-cta a:hover{text-decoration:underline;}
+
+/* Brand tagline */
+.brand{
+  margin-top:120px;
+  font-size:1rem;
+  color:var(--muted);
+  opacity:0;
+  transform:translateY(20px);
+  animation:fadeIn 0.8s forwards;
+  animation-delay:0.6s;
+}
+.brand strong{color:var(--text);}
+
+@keyframes fadeIn{
+  0%{opacity:0;transform:translateY(20px);}
+  100%{opacity:1;transform:translateY(0);}
+}
+
+@media(max-width:700px){
+  .streams{grid-template-columns:1fr;gap:28px;}
+  h1{font-size:2rem; color: var(--blue);}
+}
+</style>
+</head>
+
+<body>
+<section>
+  <div class="container">
+
+    <!-- Back to homepage -->
+    <a href="index.html" class="back-link">← Back to Home</a>
+
+    <!-- Header -->
+    <h1>
+      Class 11.<br>
+      Choose your stream.<br>
+      <span>Decide intentionally.</span>
+    </h1>
+    <p>
+      This is a moment to decide how you will approach learning. Science or Management? Think clearly, choose calmly.
+    </p>
+
+    <!-- Streams -->
+    <div class="streams">
+      <div class="stream" onclick="selectStream('Management')">
+        <h2>Management</h2>
+        <p>Understand people, systems, markets, and decisions. Learn to think critically and strategically.</p>
+      </div>
+      <div class="stream" onclick="selectStream('Science')">
+        <h2>Science</h2>
+        <p>Understand the physical and natural world deeply. Build reasoning and clarity.</p>
+        <p>comming soon</p>
+      </div>
+    </div>
+
+    <!-- Bottom CTA -->
+    <div class="bottom-cta">
+      Not ready to choose? <a href="index.html">Go back to Home</a> or explore other classes.
+    </div>
+
+    <!-- Brand tagline -->
+    <div class="brand">
+      <strong>If it makes sense,</strong> it’s Sikyo.
+    </div>
+
+  </div>
+</section>
+
+<script>
+function selectStream(name){
+  alert("Sikyo demo → " + name + " selected");
+  // later: window.location.href = name==='Science'?'class11-science.html':'class11-management.html';
+}
+</script>
+</body>
+</html>

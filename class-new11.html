@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sikyo — Class 11</title>
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+
+    <style>
+      :root {
+        --blue: #243b5a;
+        --text: #1f2937;
+        --muted: #6b7280;
+        --bg: #fafafa;
+        --card: #ffffff;
+        --line: rgba(250, 203, 76, 0.06);
+        --svg: #ffc107;
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Inter", sans-serif;
+      }
+      body {
+        background: var(--bg);
+        color: var(--text);
+      }
+
+      .container {
+        max-width: 860px;
+        margin: auto;
+        padding: 0 20px;
+      }
+
+      section {
+        padding: 50px 0;
+      }
+      footer {
+        padding: 30px 0;
+        font-size: 0.75rem;
+        color: var(--blue);
+        border-top: 1px solid rgba(0, 0, 0, 0.06);
+        background: #fff;
+        text-align: center;
+      }
+      .back {
+        font-size: 0.9rem;
+        color: var(--muted);
+        text-decoration: none;
+        display: inline-block;
+        margin-bottom: 60px;
+      }
+      .back:hover {
+        color: var(--blue);
+      }
+
+      h1 {
+        text-align: center;
+        font-size: 2.4rem;
+        font-weight: 600;
+        line-height: 1.25;
+        margin-bottom: 18px;
+      }
+
+      .subtitle {
+        font-size: 1.05rem;
+        color: var(--muted);
+        line-height: 1.8;
+        max-width: 560px;
+        margin-bottom: 70px;
+      }
+
+      /* Streams */
+      .streams {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 40px;
+      }
+
+      /* Card */
+      .stream {
+        position: relative;
+        background: var(--card);
+        border: 1px solid var(--line);
+        border-radius: 18px;
+        padding: 42px 36px;
+        cursor: pointer;
+        overflow: hidden;
+        transition: transform 0.25s ease, box-shadow 0.25s ease;
+        box-shadow: 0 14px 34px rgba(0, 0, 0, 0.08);
+      }
+
+      .stream:hover {
+        transform: translateY(-6px);
+        box-shadow: 0 18px 36px rgba(0, 0, 0, 0.08);
+      }
+
+      /* Top strip */
+      /* .stream::before{
+  content:'';
+  position:absolute;
+  top:0;
+  left:0;
+  height:6px;
+  width:100%;
+  background:linear-gradient(90deg,var(--blue),rgba(36,59,90,0.35));
+} */
+
+      /* SVG background */
+      .bg-svg {
+        position: absolute;
+        top: 20px;
+        right: 18px;
+        width: 120px;
+        opacity: 0.09;
+        pointer-events: none;
+      }
+      .bg-svg-science {
+        position: absolute;
+        top: 20px;
+        right: 18px;
+        width: 120px;
+        opacity: 0.09;
+        pointer-events: none;
+      }
+
+      /* Content */
+      .stream h2 {
+        font-size: 1.7rem;
+        font-weight: 700;
+        color: var(--blue);
+        margin-bottom: 14px;
+        position: relative;
+      }
+.stream h2::after{
+  content:'';
+  position:absolute;
+  left:0;
+  bottom:-6px;
+  width:0;
+  height:3px;
+  background:var(--blue);
+  transition:width 0.3s ease;
+}
+.stream:hover h2::after{width:50px;}
+      .stream p {
+        font-size: 0.95rem;
+        color: var(--muted);
+        line-height: 1.65;
+        max-width: 90%;
+      }
+
+      .meta {
+        margin-top: 18px;
+        font-size: 0.85rem;
+        color: var(--muted);
+      }
+
+      .status {
+        margin-top: 10px;
+        font-size: 0.85rem;
+        font-weight: 500;
+        color: var(--blue);
+      }
+
+      /* Footer */
+      .footer {
+        margin-top: 120px;
+        font-size: 0.9rem;
+        color: var(--muted);
+      }
+      .footer strong {
+        color: var(--text);
+      }
+
+      @media (max-width: 700px) {
+        .streams {
+          grid-template-columns: 1fr;
+        }
+        h1 {
+          font-size: 2rem;
+        }
+      }
+
+      /* Animation keyframes */
+      @keyframes fadeUp {
+        0% {
+          opacity: 0;
+          transform: translateY(20px);
+        }
+        100% {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+      @keyframes floatSVG {
+        0%,
+        100% {
+          transform: translateY(0px);
+        }
+        50% {
+          transform: translateY(-8px);
+        }
+      }
+      @keyframes float-sci-SVG {
+        0%,
+        100% {
+          transform: translateY(0px);
+        }
+        50% {
+          transform: translateY(-9px);
+          rotate: 90deg;
+        }
+      }
+
+      /* Apply fade-up to streams with delay */
+      .stream {
+        animation: fadeUp 0.7s ease forwards;
+        opacity: 0;
+      }
+
+      /* Stagger animation */
+      .stream:nth-child(1) {
+        animation-delay: 0.1s;
+      }
+      .stream:nth-child(2) {
+        animation-delay: 0.3s;
+      }
+
+      /* Animate SVGs floating gently */
+      .bg-svg {
+        animation: floatSVG 4s ease-in-out infinite;
+      }
+
+      .bg-svg-science {
+        animation: float-sci-SVG 5s ease-in-out infinite;
+      }
+    </style>
+  </head>
+
+  <body>
+    <section>
+      <div class="container">
+        <a href="index.html" class="back">← Home</a>
+
+        <h1>
+          Class 11<br />
+          Choose your stream.
+        </h1>
+
+        <p class="subtitle">
+        This is where understanding begins. Pick your stream. Subjects and notes are explained calmly, one concept at a time.
+        </p>
+
+        <div class="streams">
+          <!-- MANAGEMENT -->
+          <div class="stream" onclick="goManagement()">
+            <!-- Management SVG -->
+            <svg class="bg-svg" viewBox="0 0 200 200" fill="none">
+              <rect
+                x="30"
+                y="40"
+                width="140"
+                height="100"
+                rx="12"
+                stroke="var(--blue)"
+                stroke-width="3"
+              />
+              <line
+                x1="50"
+                y1="80"
+                x2="150"
+                y2="80"
+                stroke="var(--blue)"
+                stroke-width="3"
+              />
+              <line
+                x1="50"
+                y1="110"
+                x2="120"
+                y2="110"
+                stroke="var(--blue)"
+                stroke-width="3"
+              />
+            </svg>
+
+            <h2>Management</h2>
+            <p>
+            Accounts, economics, business studies — explained so ideas connect naturally, not memorised blindly.
+            </p>
+            <div class="meta">Subject-wise notes · Clear Structure</div>
+            <div class="status">Available</div>
+          </div>
+
+          <!-- SCIENCE -->
+          <div class="stream">
+            <!-- Science SVG -->
+            <svg class="bg-svg-science" viewBox="0 0 200 200" fill="none">
+              <circle
+                cx="100"
+                cy="100"
+                r="40"
+                stroke="var(--blue)"
+                stroke-width="3"
+              />
+              <ellipse
+                cx="100"
+                cy="100"
+                rx="70"
+                ry="30"
+                stroke="var(--blue)"
+                stroke-width="3"
+              />
+              <ellipse
+                cx="100"
+                cy="100"
+                rx="30"
+                ry="70"
+                stroke="var(--blue)"
+                stroke-width="3"
+              />
+            </svg>
+
+            <h2>Science</h2>
+            <p>
+              Physics, chemistry, and biology — built from fundamentals to
+              clarity.
+            </p>
+            <div class="meta">Concept-first explanations</div>
+            <div class="status">Coming soon</div>
+          </div>
+        </div>
+
+        <div class="footer">
+          <strong>If it makes sense,</strong> it’s Sikyo <span style="color: #ffc107; margin-left: -4px;">.</span>
+        </div>
+      </div>
+    </section>
+    <footer>
+      <div class="container">© 2025 Sikyo — sikyo.study</div>
+    </footer>
+    <script>
+      function goManagement() {
+        window.location.href = "class11-management.html";
+      }
+    </script>
+  </body>
+</html>
