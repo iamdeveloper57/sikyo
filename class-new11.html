@@ -28,6 +28,7 @@
         font-family: "Inter", sans-serif;
       }
       body {
+        user-select: none;
         background: var(--bg);
         color: var(--text);
       }
@@ -39,7 +40,7 @@
       }
 
       section {
-        padding: 50px 0;
+        padding: 60px 0;
       }
       footer {
         padding: 30px 0;
@@ -66,8 +67,18 @@
         font-weight: 600;
         line-height: 1.25;
         margin-bottom: 18px;
+        animation: text_fade 0.99s ease;
       }
-
+      @keyframes text_fade {
+        0% {
+          opacity: 0;
+          transform: translateY(25px);
+        }
+        100% {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
       .subtitle {
         font-size: 1.05rem;
         color: var(--muted);
@@ -118,7 +129,7 @@
         top: 20px;
         right: 18px;
         width: 120px;
-        opacity: 0.09;
+        opacity: 0.132;
         pointer-events: none;
       }
       .bg-svg-science {
@@ -126,7 +137,7 @@
         top: 20px;
         right: 18px;
         width: 120px;
-        opacity: 0.09;
+        opacity: 0.123;
         pointer-events: none;
       }
 
@@ -138,17 +149,19 @@
         margin-bottom: 14px;
         position: relative;
       }
-.stream h2::after{
-  content:'';
-  position:absolute;
-  left:0;
-  bottom:-6px;
-  width:0;
-  height:3px;
-  background:var(--blue);
-  transition:width 0.3s ease;
-}
-.stream:hover h2::after{width:50px;}
+      .stream h2::after {
+        content: "";
+        position: absolute;
+        left: 0;
+        bottom: -6px;
+        width: 0;
+        height: 3px;
+        background: var(--blue);
+        transition: width 0.3s ease;
+      }
+      .stream:hover h2::after {
+        width: 50px;
+      }
       .stream p {
         font-size: 0.95rem;
         color: var(--muted);
@@ -241,13 +254,128 @@
       .bg-svg-science {
         animation: float-sci-SVG 5s ease-in-out infinite;
       }
+
+      .premium-back {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 12px 22px;
+        border-radius: 8px;
+        background: var(--blue);
+        color: #fff;
+        font-weight: 500;
+        letter-spacing: 0.2px;
+        /* box-shadow: 0 10px 28px rgba(36, 59, 90, 0.35); */
+        transition: all 0.3s ease;
+      }
+      .premium-back:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 14px 36px rgba(36, 59, 90, 0.45);
+        color: #ffffff;
+      }
+
+      .premium-back:active {
+        transform: translateY(0);
+        box-shadow: 0 8px 20px rgba(36, 59, 90, 0.35);
+      }
+
+      /* Sikyo Navbar */
+.sikyo-nav {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+
+  background: rgba(250, 250, 250, 0.92);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.nav-container {
+  max-width: 860px;
+  margin: auto;
+  padding: 15px 30px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.nav-logo {
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: var(--blue);
+  text-decoration: none;
+  letter-spacing: 0.3px;
+}
+
+.nav-links {
+  display: flex;
+  gap: 26px;
+}
+
+.nav-links a {
+  font-size: 0.9rem;
+  color: var(--blue);
+  text-decoration: none;
+  position: relative;
+  padding-bottom: 4px;
+  transition: color 0.2s ease;
+}
+
+.nav-links a:hover {
+  color: var(--blue);
+}
+
+/* Active page */
+.nav-links a.active {
+  color: var(--blue);
+}
+
+.nav-links a.active::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -6px;
+  width: 100%;
+  height: 2px;
+  background: var(--blue);
+  opacity: 0.8;
+}
+
+/* Mobile */
+@media (max-width: 640px) {
+  .nav-links {
+    gap: 18px;
+  }
+}
+
+
+
+
     </style>
   </head>
 
   <body>
+
+             <nav class="sikyo-nav">
+  <div class="nav-container">
+    <a href="index.html" class="nav-logo">Sikyo</a>
+
+    <div class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="#" class="active">Class 11</a>
+
+    </div>
+  </div>
+</nav>
+
     <section>
       <div class="container">
-        <a href="index.html" class="back">← Home</a>
+        <!-- <a href="index.html" class="back premium-back"> ⟸ Back to Home </a> -->
+
+
 
         <h1>
           Class 11<br />
@@ -255,7 +383,8 @@
         </h1>
 
         <p class="subtitle">
-        This is where understanding begins. Pick your stream. Subjects and notes are explained calmly, one concept at a time.
+          This is where understanding begins. Pick your stream. Subjects and
+          notes are explained calmly, one concept at a time.
         </p>
 
         <div class="streams">
@@ -292,7 +421,8 @@
 
             <h2>Management</h2>
             <p>
-            Accounts, economics, business studies — explained so ideas connect naturally, not memorised blindly.
+              Accounts, economics, business studies — explained so ideas connect
+              naturally, not memorised blindly.
             </p>
             <div class="meta">Subject-wise notes · Clear Structure</div>
             <div class="status">Available</div>
@@ -338,7 +468,8 @@
         </div>
 
         <div class="footer">
-          <strong>If it makes sense,</strong> it’s Sikyo <span style="color: #ffc107; margin-left: -4px;">.</span>
+          <strong>If it makes sense,</strong> it’s Sikyo
+          <span style="color: #ffc107; margin-left: -4px">.</span>
         </div>
       </div>
     </section>
